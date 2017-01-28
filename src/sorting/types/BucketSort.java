@@ -19,8 +19,6 @@ public class BucketSort {
         int bigger = SortingUtils.getBigger(integerArray);
         int[] weightArray = new int[++bigger];
         
-        weightArray = SortingUtils.initializeArrayWithZeros(weightArray);
-
         //Array with the numbers of replays of each number
         for(int i=0;i<integerArray.length;i++){
             //increment the weight of the current position

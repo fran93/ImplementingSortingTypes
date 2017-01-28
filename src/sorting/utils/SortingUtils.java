@@ -36,17 +36,30 @@ public class SortingUtils {
         }
         System.out.println("]");
     }
-    
-    
+
     /**
-     * Initialize the array using 0
-     * @param arr
-     * @return 
+     * Insert a number in the array, and move the others numbers to right
+     * @param arr   Array
+     * @param position Position where you will insert the number
+     * @param size Last position when you want to move numbers
+     * @param value Number that you want to insert
+     * @return the array modified
      */
-    public static int[] initializeArrayWithZeros(int[] arr){
-        for(int i=0;i<arr.length;i++){
-            arr[i]=0;
+    public static int[] insertAndMoveRight(int[] arr, int position, int size, int value){
+        int nextNumber;
+        int number = value;
+        //increment size
+        size++;
+        //move the numbers
+        for(int i=position; i<size;i++){
+            //store the next number
+            nextNumber = arr[i];
+            //override the number
+            arr[i]=number;
+            //reset the current number
+            number = nextNumber;
         }
+        
         return arr;
     }
 }
