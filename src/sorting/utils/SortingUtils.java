@@ -1,5 +1,7 @@
 package sorting.utils;
 
+import java.util.LinkedList;
+
 /**
  *
  * @author fran
@@ -58,6 +60,63 @@ public class SortingUtils {
             arr[i]=number;
             //reset the current number
             number = nextNumber;
+        }
+        
+        return arr;
+    }
+    
+    /**
+     * 
+     * @param arr
+     * @return 
+     */
+    public static int[][] splitArray(int[] arr){
+        int middle = arr.length/2;
+        int[] arrA = new int[middle];
+        int[] arrB = new int[arr.length-middle];
+        
+        //fill up array A
+        for(int i=0;i<middle;i++){
+            arrA[i]=arr[i];
+        }
+        
+        //fill up array B
+        for(int i=0;i<arrB.length;i++){
+            arrB[i]=arr[i+middle];
+        }
+        
+        //Return the new arrays
+        int[][] splited = { arrA, arrB };
+        
+        return splited;
+    }
+    
+    /**
+     * 
+     * @param arrA
+     * @param arrB
+     * @return 
+     */
+    public static int[] mergeAndOrderArray(int[] arrA, int[] arrB){
+        int[] arr = new int[arrA.length+arrB.length];
+        
+        int a = 0;
+        int b = 0;
+        
+        for(int i=0;i<arr.length;i++){
+            if(a==arrA.length){
+                arr[i]=arrB[b];
+                b++;
+            }else if(b==arrB.length){
+                arr[i]=arrA[a];
+                a++;
+            }else if(arrA[a]<arrB[b]){
+                arr[i]=arrA[a];
+                a++;
+            }else{
+                arr[i]=arrB[b];
+                b++;
+            }
         }
         
         return arr;
